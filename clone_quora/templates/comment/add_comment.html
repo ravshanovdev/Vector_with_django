@@ -1,0 +1,26 @@
+{% load static %}
+
+  <div class="container mt-5">
+    <h2>Create a Comment</h2>
+    <hr>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="post" value="{{ post.slug }}">
+
+        <a href="{% url 'profile_page' request.user %}">{{ request.user }}</a>
+
+        {% if request.user.profile.profile_pic %}
+            <img src="{{ request.user.profile.profile_pic.url }}" alt="Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
+        {% else %}
+            <img src="{% static 'img/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg' %}" alt="Default Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
+        {% endif %}
+
+        <label for="body">Comment:</label><br>
+        <textarea id="description" name="body"></textarea><br>
+
+
+
+      <button type="submit" class="btn btn-primary mt-2">Create</button>
+    </form>
+  </div>
+

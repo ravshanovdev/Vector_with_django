@@ -1,0 +1,50 @@
+
+{% load static %}
+
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h1>{{ question.body_question }}</h1>
+      </div>
+      <div class="card-body">
+        {% if question.poster %}
+          <img src="{{ question.poster.url }}" alt="{{ question.body_question }}" style="max-width: 300px; max-height: 300px;">
+        {% endif %}
+        {% if question.user.profile_page.profile_pic %}
+          <img src="{{ request.user.profile_page.profile_pic }}" alt="Profile Picture" class="img-fluid" style="max-width: 300px; max-height: 300px;">
+        {% else %}
+          <img src="{% static 'img/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg' %}" alt="Default Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
+           <div class="profile-name">
+              <a href="{% url 'profile_page' request.user %}">{{ question.user.profile.user.username }}</a>
+           </div>
+        {% endif %}
+        <a href="{% url 'update_question' question.id %}">savolni o'zgartirish</a>
+       | <a href="{% url 'create_answer' question.id %}" class="btn btn-primary">Javob yozish</a>
+        {% for answer in question.answer_set.all %}
+          {% if answer %}
+            <div class="card my-3">
+              <div class="card-body">
+                <p class="card-text">{{ answer.text }}</p>
+                <p class="card-subtitle text-muted">Javob beruvchi ismi: {{ answer.user.username }}</p>
+                <p class="card-subtitle text-muted">Javob beruvchining javobi: {{ answer.answer }}</p>
+                {% if answer.poster %}
+                    <img src="{{ answer.poster.url }}" alt="Answer Image" style="max-width: 300px; max-height: 300px;">
+                    <li>-------------------------</li>
+                {% else %}
+                  <li>rasm yo'q akasi</li>
+                  <li>-------------------------</li>
+                {% endif %}
+              </div>
+            </div>
+          {% else %}
+                <h2>hech qanay javob yoq</h2>
+          {% endif %}
+        {% empty %}
+           <p class="text-muted">Bu savolga hali javob berilmagan</p>
+        {% endfor %}
+
+
+      </div>
+    </div>
+  </div>
+

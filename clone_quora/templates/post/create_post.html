@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yangi Post yaratish</title>
+</head>
+<body>
+    <h1>Yangi Post yaratish</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">Sarlavha:</label><br>
+        <input type="text" id="title" name="title"><br>
+
+        <label for="description">Tavsif:</label><br>
+        <textarea id="description" name="description"></textarea><br>
+
+        <label for="photo">Rasm:</label><br>
+        <input type="file" id="photo" name="photo"><br>
+
+        <input type="submit" value="Jo'natish">
+    </form>
+</body>
+</html>

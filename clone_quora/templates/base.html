@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Vector</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<head>
+    <link rel="stylesheet" href="{% static 'css/forget.css' %}">
+	<link rel="stylesheet" href="{% static 'css/login.css' %}">
+	<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<header>
+
+    <div class="nav-left">
+        <h1><a href="{% url 'home' %}">Vector</a></h1>
+    </div>
+    <div>
+        <a href="{% url 'create_post' %}">Yangi post Yozish</a>
+    </div>
+    <div>
+        {% block content %}
+        {% endblock content %}
+    </div>
+</header>
+

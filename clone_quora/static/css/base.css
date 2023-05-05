@@ -1,0 +1,125 @@
+/* home.css */
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #f2f2f2;
+}
+
+.nav-left {
+  display: inline-block;
+}
+
+.nav-left h1 a {
+  color: #333;
+  text-decoration: none;
+}
+
+nav {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* forget.css */
+form {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin: 2rem auto;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+form h2 {
+  margin-bottom: 2rem;
+}
+
+form input[type="email"], form input[type="password"] {
+  display: block;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+form button {
+  background-color: #333;
+  border: none;
+  color: #fff;
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.8rem 2rem;
+}
+
+/* login.css */
+form {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin: 2rem auto;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+form h2 {
+  margin-bottom: 2rem;
+}
+
+form input[type="email"], form input[type="password"] {
+  display: block;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+form button {
+  background-color: #333;
+  border: none;
+  color: #fff;
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.8rem 2rem;
+}
+
+/* signup.css */
+form {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin: 2rem auto;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+form h2 {
+  margin-bottom: 2rem;
+}
+
+form input[type="email"], form input[type="password"], form input[type="text"] {
+  display: block;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+form button {
+  background-color: #333;
+  border: none;
+  color: #fff;
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.8rem 2rem;
+}

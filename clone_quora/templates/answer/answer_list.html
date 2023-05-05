@@ -1,0 +1,30 @@
+
+    {% for questions in question_list %}
+
+      <p>{{ questions.body_question }}</p>
+    {% endfor %}
+    <hr>
+
+    <h2>Answers:</h2>
+    {% if answers %}
+        <ul>
+        {% for answer in answers %}
+            {% if answer %}
+                <a href="{% url 'profile_page' request.user %}">{{ answer.user }}</a>
+                <img src="{{ answer.poster }}" alt="Answer Image" style="max-width: 300px; max-height: 300px;">
+                <li>{{ answer.answer }}</li>
+                <li>------------------------------------------------------</li>
+
+
+            {% else %}
+                <li>rasm yo'q akasi</li>
+            {% endif %}
+        {% empty %}
+            <li>No answers yet.</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No answers yet.</p>
+    {% endif %}
+
+    <hr>

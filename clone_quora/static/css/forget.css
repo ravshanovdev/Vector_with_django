@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    font-family: 'Poppins', sans-serif;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+:root {
+    --color_bg: rgb(185, 43, 39);
+    --color_bg-hover: rgb(190, 72, 68);
+    --border_color: rgb(219, 215, 215);
+    --white: #fff;
+    --black: #4a4a4a;
+    --text-color: #fff;
+    --link-bg: #f3f2f2;
+    --border: #cbc9c9;
+    --blue: rgb(72, 99, 253);
+}
+/* ======== Header ======== */
+.header{
+    height: 100vh;
+    background-image: url(./171951-lofoten-vyzvat_dozhd-senya-municipalitet_troms-more-3840x2160.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    
+}
+.header-content{
+    width: 700px;
+    height: 510px;
+    background: rgb(0, 0,0,0.5);
+    border-radius: 5px;
+}
+.header-title{
+    font-size: 60px;
+    text-align: center;
+    font-weight: 600;
+    padding-top: 20px;
+    color: #3e7af3;
+}
+.header-text{
+    text-align: center;
+    color: var(--text-color);
+    padding-top: 10px;
+}
+
+.right{
+    width: 350px;
+    padding: 10px 20px;
+}
+.right-title{
+    font-size: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--white);
+}
+.right-text{
+    font-size: 14px;
+    margin: 0;
+    margin-top: 15px;
+    color: var(--white);
+}
+.right-text:nth-of-type(1){
+    margin-top: 0;
+}
+.right-input{
+    margin-top: 8px;
+}
+.right-input:hover{
+    border: 1px solid var(--blue);
+}
+.forget{
+    color: var(--white);
+    font-size: 12px;
+}
+.forget:hover{
+    color: var(--white);
+}
+.login{
+    padding: 5px 20px;
+    background: #568af3;
+    border-radius: 15px;
+    color: var(--white);
+    margin-top:15px;
+    
+}
+.login:hover{
+    color: var(--white);
+    background: #3e7af3;
+}
+
+/* ======== /Header ======== */

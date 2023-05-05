@@ -1,0 +1,9 @@
+
+  <h2>Javob qo'shish</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="question_id" value="{{ question_id }}">
+    <button type="submit" class="btn btn-primary">Javob yuborish</button>
+  </form>
+

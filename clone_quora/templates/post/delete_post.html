@@ -1,0 +1,15 @@
+
+
+{% block title %}Postni o'chirish{% endblock %}
+
+
+  <div class="container">
+    <h1 class="my-4">Postni o'chirish</h1>
+    <p>Ishonchingiz komilmi? "{{ object.title }}" nomli postni o'chirishni xohlaysizmi?</p>
+    <form method="POST">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Ha, o'chirish</button>
+      <a href="{% url 'post_detail' post.slug %}" class="btn btn-secondary">Yo'q, qaytish</a>
+    </form>
+  </div>
+

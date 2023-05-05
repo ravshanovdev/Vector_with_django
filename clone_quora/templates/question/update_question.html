@@ -1,0 +1,20 @@
+
+{% load static %}
+
+{% block title %}Postni yangilash{% endblock %}
+
+<!--{% block head %}-->
+<!--  <link rel="stylesheet" href="{% static 'css/update_post.css' %}">-->
+<!--{% endblock %}-->
+
+
+  <div class="container">
+    <h1 class="my-4">savolni o'zgartirish: {{ object.title }}</h1>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Yangilash</button>
+      <a href="{% url 'delete_question' question.id %}">o'chirib yuborish</a>
+    </form>
+  </div>
+

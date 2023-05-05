@@ -1,0 +1,88 @@
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+
+
+    <div class="container">
+        <div class="profile">
+            <div class="profile-header">
+                <div class="profile-img">
+                    {% if profile.profile_pic %}
+
+                        <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
+                        <li>{{ profile.user }}</li>
+                    {% else %}
+                        <img src="{% static 'img/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg' %}" alt="Default Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
+                        {{ profile.user }}
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+            <div class="profile-info">
+                <div class="profile-bio">
+                    {% if profile.biography %}
+                        {{ profile.biography }}
+                    {% endif %}
+                </div>
+                <div class="profile-links">
+                    <h2>My profiles on other social pages</h2>
+                    <ul>
+                       {% if profile.web_site_url %}
+                             <a href="{{ profile.web_site_url }}" target="_blank">Website</a>
+                       {% endif %}
+                       {% if profile.twitter_url %}
+                           | <a href="{{ profile.twitter_url }}" target="_blank">Twitter</a>
+                       {% endif %}
+                       {% if profile.instagram_url %}
+                           | <a href="{{ profile.instagram_url }}" target="_blank">Instagram</a>
+                       {% endif %}
+                       {% if profile.facebook_url %}
+                           | <a href="{{ profile.facebook_url }}" target="_blank">Facebook</a>
+                       {% endif %}
+                       {% if profile.pinterest_url %}
+                           | <a href="{{ profile.pinterest_url }}" target="_blank">Pinterest</a>
+                       {% endif %}
+                       | <a href="{% url 'update_profile' request.user %}" target="_blank">profilni tahrirlash</a>
+                        <br>
+
+                        </br>
+
+                  <form method="POST">
+                     {% if request.user != profile.user %}
+                        {% csrf_token %}
+
+                        {% if profile in user.profile.follows.all %}
+                          <button class="btn btn-outline-danger" name="follow"
+                          value="unfollow" type="submit">Unfollow @{{ profile.user.username }}</button>
+
+                        {% else %}
+                          <button class="btn btn-outline-succes" name="follow"
+                          value="follow" type="submit">Follow @{{ profile.user.username }}</button>
+
+                        {% endif %}
+                     {% endif %}
+
+                  </form>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--<div class="card mb-3" style="max-width: 540px;">-->
+<!--  <div class="row g-0">-->
+<!--    <div class="col-md-4">-->
+<!--      <img src="..." class="img-fluid rounded-start" alt="...">-->
+<!--    </div>-->
+<!--    <div class="col-md-8">-->
+<!--      <div class="card-body">-->
+<!--        <h5 class="card-title">{{ profile.user.username }}</h5>-->
+<!--        <p class="card-text">{{ profile.biography }}</p>-->
+<!--        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

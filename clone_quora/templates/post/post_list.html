@@ -1,0 +1,35 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/post_list.css' %}">
+  <div class="container">
+    <div class="row">
+      <a href="{% url 'create_post' %}" class="btn btn-primary">Yangi Post qo'shish</a>
+
+      {% for post in post_list %}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="{{ post.photo.url }}" alt="{{ post.title }}">
+          <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h5>
+            <p class="card-text">{{ post.description|truncatechars:150 }}</p>
+            <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">View More</a>
+          </div>
+         <div class="card-footer">
+            <small class="text-muted">
+            <a href="{% url 'profile_page' slug=post.author.profile.slug %}">
+            {{ post.author.username }}
+            </small>
+         </div>
+
+         <br>----------------------------------------------------------------------</br>
+
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+
+

@@ -1,0 +1,253 @@
+<!--{% extends 'base.html' %}-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!--{% block content %}-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <title>Vector</title>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href=""><h2 class="nav-title">Vector</h2></a>
+                <ul class="nav-list">
+                    <li><a href="{% url 'home' %}" class="nav-link"><svg width="27" height="27" viewBox="0 0 24 24"><path d="M22.02 11.46L12.63 2.45999C12.34 2.17999 11.89 2.17999 11.6 2.44999L1.99 11.45C1.77 11.66 1.69 11.99 1.8 12.27C1.91 12.56 2.19 12.74 2.5 12.74H5.25V20.49C5.25 20.9 5.59 21.24 6 21.24H9.62C10.03 21.24 10.37 20.9 10.37 20.49V16.36C10.37 15.43 11.09 14.67 12 14.62H12.12C13.08 14.62 13.87 15.4 13.87 16.37V20.5C13.87 20.91 14.21 21.25 14.62 21.25H18C18.41 21.25 18.75 20.91 18.75 20.5V12.75H21.5C21.81 12.75 22.08 12.56 22.2 12.28C22.32 12 22.24 11.67 22.02 11.46Z" fill="rgb(185, 43, 39)" class="icon_svg-fill_as_stroke"></path></svg></a></li>
+                    <li><a href="{% url 'following_list' %}" class="nav-link"><svg width="27" height="27" viewBox="0 0 24 24"><path d="M7.46001 9.04001C6.26001 9.04001 5.29001 8.07001 5.29001 6.87001C5.29001 5.67001 6.26001 4.70001 7.46001 4.70001C8.66001 4.70001 9.63001 5.67001 9.63001 6.87001C9.63001 8.07001 8.65001 9.04001 7.46001 9.04001ZM7.46001 6.20001C7.09001 6.20001 6.79001 6.50001 6.79001 6.87001C6.79001 7.24001 7.09001 7.54001 7.46001 7.54001C7.83001 7.54001 8.13001 7.24001 8.13001 6.87001C8.13001 6.50001 7.83001 6.20001 7.46001 6.20001Z" fill="#666666" class="icon_svg-fill_as_stroke"></path><path d="M18.41 7.39001H12.22C11.81 7.39001 11.47 7.05001 11.47 6.64001C11.47 6.23001 11.81 5.89001 12.22 5.89001H18.41C18.82 5.89001 19.16 6.23001 19.16 6.64001C19.16 7.05001 18.82 7.39001 18.41 7.39001Z" fill="#666666" class="icon_svg-fill_as_stroke"></path><path d="M18.41 14.72H12.22C11.81 14.72 11.47 14.38 11.47 13.97C11.47 13.56 11.81 13.22 12.22 13.22H18.41C18.82 13.22 19.16 13.56 19.16 13.97C19.16 14.38 18.82 14.72 18.41 14.72Z" fill="#666666" class="icon_svg-fill_as_stroke"></path><path d="M18.41 18.38H12.22C11.81 18.38 11.47 18.04 11.47 17.63C11.47 17.22 11.81 16.88 12.22 16.88H18.41C18.82 16.88 19.16 17.22 19.16 17.63C19.16 18.04 18.82 18.38 18.41 18.38Z" fill="#666666" class="icon_svg-fill_as_stroke"></path><path d="M18.41 11.06H12.22C11.81 11.06 11.47 10.72 11.47 10.31C11.47 9.9 11.81 9.56 12.22 9.56H18.41C18.82 9.56 19.16 9.9 19.16 10.31C19.16 10.72 18.82 11.06 18.41 11.06Z" fill="#666666" class="icon_svg-fill_as_stroke"></path><path d="M7.44999 11.23L7.81999 11.87L8.18999 12.51H7.44999H6.71999L7.08999 11.87L7.44999 11.23ZM7.44999 9.73001C6.90999 9.73001 6.41999 10.02 6.14999 10.48L5.77999 11.12L5.40999 11.76C5.13999 12.22 5.13999 12.8 5.40999 13.26C5.68999 13.72 6.17999 14 6.71999 14H7.45999H8.19999C8.73999 14 9.22999 13.71 9.49999 13.25C9.76999 12.79 9.76999 12.21 9.49999 11.75L9.12999 11.11L8.75999 10.47C8.48999 10.02 7.98999 9.73001 7.44999 9.73001Z" fill="#666666" class="icon_svg-fill_as_stroke"></path><path d="M8.81001 19.07H6.10001C5.69001 19.07 5.35001 18.73 5.35001 18.32V15.61C5.35001 15.2 5.69001 14.86 6.10001 14.86H8.81001C9.22001 14.86 9.56001 15.2 9.56001 15.61V18.32C9.56001 18.73 9.22001 19.07 8.81001 19.07ZM6.85001 17.57H8.06001V16.36H6.85001V17.57Z" fill="#666666" class="icon_svg-fill_as_stroke"></path><path d="M18.5 21.75H5.5C3.71 21.75 2.25 20.29 2.25 18.5V5.5C2.25 3.71 3.71 2.25 5.5 2.25H18.5C20.29 2.25 21.75 3.71 21.75 5.5V18.5C21.75 20.29 20.29 21.75 18.5 21.75ZM5.5 3.75C4.54 3.75 3.75 4.54 3.75 5.5V18.5C3.75 19.46 4.54 20.25 5.5 20.25H18.5C19.46 20.25 20.25 19.46 20.25 18.5V5.5C20.25 4.54 19.46 3.75 18.5 3.75H5.5Z" fill="#666666" class="icon_svg-fill_as_stroke"></path></svg></a></li>
+                    <li><a href="{% url 'questions_list' %}" class="nav-link"><svg width="27" height="27" viewBox="0 0 24 24"><path d="M20.45 6.28001C20.45 5.55001 20.17 4.87001 19.65 4.35001C18.62 3.32001 16.83 3.32001 15.8 4.35001L5.17 14.98C5.09 15.06 5.03 15.16 4.99 15.27L3.6 19.46C3.51 19.73 3.58 20.03 3.78 20.23C3.92 20.37 4.11 20.45 4.31 20.45C4.39 20.45 4.47 20.44 4.55 20.41L8.74 19.01C8.85 18.97 8.95 18.91 9.03 18.83L19.65 8.21001C20.16 7.69001 20.45 7.01002 20.45 6.28001ZM18.59 7.15001L8.09 17.65L6.33 18.24L5.77 17.68L6.35 15.92L16.85 5.42001C17.31 4.96001 18.12 4.96001 18.58 5.42001C18.81 5.65001 18.94 5.96001 18.94 6.29001C18.94 6.62001 18.82 6.92001 18.59 7.15001Z" fill="#636466" class="icon_svg-fill_as_stroke"></path><path d="M20.5 11.75C20.09 11.75 19.75 12.09 19.75 12.5V19.75H12.5C12.09 19.75 11.75 20.09 11.75 20.5C11.75 20.91 12.09 21.25 12.5 21.25H20.5C20.91 21.25 21.25 20.91 21.25 20.5V12.5C21.25 12.09 20.91 11.75 20.5 11.75Z" fill="#636466" class="icon_svg-fill_as_stroke"></path><path d="M4.25 11.5V4.25H11.5C11.91 4.25 12.25 3.91 12.25 3.5C12.25 3.09 11.91 2.75 11.5 2.75H3.5C3.09 2.75 2.75 3.09 2.75 3.5V11.5C2.75 11.91 3.09 12.25 3.5 12.25C3.91 12.25 4.25 11.91 4.25 11.5Z" fill="#636466" class="icon_svg-fill_as_stroke"></path></svg></a></li>
+<!--                    <li><a href="#" class="nav-link"><svg width="27" height="27" viewBox="0 0 24 24"><path d="M20.86 14.93L20.48 14.54C20.22 14.27 19.98 14 19.76 13.73C19.57 13.49 19.4 13.27 19.26 13.07C19.07 12.79 18.99 12.62 18.96 12.55C18.93 12.46 18.81 12.1 18.73 11.12C18.68 10.5 18.66 9.8 18.67 9.12C18.67 9.05 18.67 8.97 18.67 8.87C18.66 5.22 15.67 2.25 11.99 2.25C8.30999 2.25 5.31999 5.23 5.31999 8.89V9.11C5.32999 9.81 5.30999 10.51 5.25999 11.12C5.17999 12.09 5.06999 12.46 5.02999 12.54C4.99999 12.62 4.91999 12.78 4.72999 13.06C4.58999 13.26 4.42999 13.48 4.22999 13.72C4.01999 14 3.77999 14.27 3.51999 14.54L3.27999 14.79C3.22999 14.84 3.17999 14.89 3.15999 14.91C2.76999 15.28 2.54999 15.79 2.54999 16.32V17.1C2.54999 17.96 3.24999 18.65 4.10999 18.65H8.21999C8.56999 20.41 10.13 21.75 12 21.75C13.87 21.75 15.43 20.42 15.78 18.65H19.89C20.75 18.65 21.45 17.95 21.45 17.1V16.32C21.44 15.78 21.22 15.26 20.86 14.93ZM12 20.25C10.97 20.25 10.1 19.58 9.77999 18.65H14.22C13.9 19.58 13.03 20.25 12 20.25ZM19.88 17.15L4.05999 17.1V16.32C4.05999 16.2 4.10999 16.08 4.22999 15.97L4.60999 15.59C4.88999 15.29 5.15999 14.99 5.39999 14.7C5.62999 14.42 5.81999 14.16 5.98999 13.92C6.18999 13.62 6.33999 13.34 6.43999 13.11C6.58999 12.72 6.69999 12.1 6.76999 11.25C6.81999 10.59 6.83999 9.85 6.82999 9.08V8.9C6.82999 6.06 9.15999 3.75 12.01 3.75C14.86 3.75 17.19 6.05 17.19 8.87V9.08C17.18 9.83 17.2 10.58 17.25 11.24C17.32 12.08 17.42 12.71 17.58 13.1C17.67 13.34 17.82 13.61 18.03 13.91C18.19 14.15 18.39 14.41 18.62 14.69C18.86 14.98 19.13 15.28 19.41 15.58L19.82 15.99C19.91 16.08 19.96 16.19 19.96 16.32L19.88 17.15Z" fill="#666666" class="icon_svg-fill_as_stroke"></path></svg></a></li>-->
+                </ul>
+                <form class="search-content d-flex">
+                    <input type="search" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
+                    <div class="search-button">
+                        <img class="search-img" src="static/img/search.png" alt="">
+                    </div>
+                </form>
+                <div class="try">
+                    <div>
+                        <a class="nav-link" href="{% url 'profile_page' slug=request.user.username %}">
+                        {% if request.user.profile_pic %}
+                             <img src="{{ request.user.profile_pic.url }}" class="rounded-circle" height="30" width="30">
+                        {% else %}
+                             <img src="{% static 'img/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg' %}"
+                             class="rounded-circle" height="30" width="30">
+                        {% endif %}
+                             {{ request.user.username }}
+                        </a>
+
+
+
+                    </div>
+
+                    <svg class="icon_svg-fill_as_stroke" width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.25C6.62 2.25 2.25 6.62 2.25 12C2.25 17.38 6.62 21.75 12 21.75C17.38 21.75 21.75 17.38 21.75 12C21.75 6.62 17.38 2.25 12 2.25ZM19.34 8.25H15.82C15.31 6.17 14.43 4.78 13.69 3.92C16.16 4.44 18.22 6.07 19.34 8.25ZM14.75 12C14.75 12.83 14.69 13.57 14.59 14.25H9.41C9.31 13.57 9.25 12.83 9.25 12C9.25 11.17 9.31 10.43 9.41 9.75H14.59C14.69 10.43 14.75 11.17 14.75 12ZM12 19.66C11.42 19.17 10.34 17.99 9.72 15.75H14.28C13.66 17.99 12.58 19.16 12 19.66ZM3.75 12C3.75 11.22 3.87 10.47 4.07 9.75H7.9C7.81 10.44 7.75 11.18 7.75 12C7.75 12.82 7.81 13.56 7.9 14.25H4.07C3.87 13.53 3.75 12.78 3.75 12ZM9.72 8.25C10.34 6.01 11.43 4.84 12 4.34C12.58 4.83 13.66 6.01 14.28 8.25H9.72ZM10.31 3.92C9.57 4.78 8.69 6.17 8.18 8.25H4.66C5.78 6.07 7.84 4.44 10.31 3.92ZM4.66 15.75H8.18C8.69 17.83 9.57 19.22 10.31 20.08C7.84 19.56 5.78 17.93 4.66 15.75ZM13.69 20.08C14.43 19.22 15.31 17.83 15.82 15.75H19.34C18.22 17.93 16.16 19.56 13.69 20.08ZM19.93 14.25H16.1C16.19 13.56 16.25 12.82 16.25 12C16.25 11.18 16.19 10.44 16.1 9.75H19.93C20.13 10.47 20.25 11.22 20.25 12C20.25 12.78 20.13 13.53 19.93 14.25Z" fill="#666666" ></path></svg>
+                </div>
+                <!-- ----------------------------- -->
+                <div class="add">
+                    <div class="wrapper">
+                        <a href="{% url 'create_question' %}" type="submit" class="btn buttons add-link show-buttons">Add question</a>
+                        <a href="{% url 'create_post' %}" class="btn buttons add-link_two show-buttons_two" >
+                            <svg class="icon_svg-stroke" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m5 8.5 7 7 7.005-7"  stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"></path></svg>
+                        </a>
+                        <div class="modal_one hidden" id="modal">
+                            <div class="modal-header">
+                                <button class=" buttons close-buttons">
+                                    <i class='bx bx-x bx-close'></i>
+                                </button>
+                            </div>
+                            <div class="button-content">
+                                <button class="button-lef">Add Question</button>
+                                <button class="button-right">Create Post</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal-body_cont">
+                                    <h3 class="modal-title">Tips on getting good answers quickly</h3>
+                                    <p class="modal-text">• Tips on getting good answers quickly</p>
+                                    <p class="modal-text">• Keep your question short and to the point</p>
+                                    <p class="modal-text">• Double-check grammar and spelling</p>
+                                </div>
+                                <textarea class="modal-area" placeholder="Start your question 'What', 'How', 'Why', etc." name="" id=""
+                                    cols="30" rows="10"></textarea>
+                                <div class="modal-footer">
+                                    <button class="cancel buttons close-buttons close-btn_two" >Cancel</button>
+                                    <button type="submit" class="question">Add question</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modall right ">
+                            <div class="modal-header">
+                                <button class="buttons close-buttons close-button">
+                                    <i class='bx bx-x bx-close'></i>
+                                </button>
+                            </div>
+                            <div class="button-content">
+                                <button class="button-left_two  button-left" >Add Question</button>
+                                <button class="button-right_two btnRight" >Create Post</button>
+                            </div>
+                            <div class="right-body_cont">
+                                <div class="d-flex">
+                                    <a class="main-mail" href="">A</a>
+                                    <p class="">Komilov Ali</p>
+                                </div>
+                                <textarea class="right-area" placeholder="Say someting..." name="" id=""
+                                    cols="30" rows="10"></textarea>
+                                <div class="right-footer">
+                                    <div>
+                                    </div>
+                                    <button type="submit" class="question">Post</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="overlay hidden overlay"></div>
+
+                    </div>
+                    <!-- ========= -->
+
+                    <!-- ====== -->
+                </div>
+            </nav>
+        </div>
+    </div>
+    <main class="main">
+        <div class="container d-flex">
+            <div class="main-content">
+                <ul class="main-bar">
+                            {% for profile in following %}
+                                  {% if request.user != profile.user %}
+                                         {% if profile.profile_pic %}
+                                             <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
+                                         {% else %}
+                                             <img src="{% static 'img/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg' %}" alt="Default Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
+                                         {% endif %}
+                                         <li><img class="main-bar_img" src="./img/1.jpg" alt=""><a href="{% url 'profile_page' slug=profile.slug %}" class="main-bar_link">{{ profile.user.username }}</a></li>
+                                  <div class="profile-bio">
+                                        {% if profile.biography %}
+                                             {{ profile.biography }}
+                                        {% endif %}
+                                 </div>
+                            {% endif %}
+            <br>
+            </br>
+                            {% empty %}
+                                 <li>You are not following anyone yet.</li>
+                            {% endfor %}
+
+<!--                 <li><img class="main-bar_img" src="./img/1.jpg" alt=""><a href="#" class="main-bar_link">Russian (language)</a></li>-->
+<!--                 <li><img class="main-bar_img" src="./img/1.jpg" alt=""><a href="#" class="main-bar_link">Computer Science</a></li>-->
+<!--                 <li><img class="main-bar_img" src="./img/1.jpg" alt=""><a href="#" class="main-bar_link">Music</a></li>-->
+<!--                 <li><img class="main-bar_img" src="./img/1.jpg" alt=""><a href="#" class="main-bar_link">Movies</a></li>-->
+<!--                 <li><img class="main-bar_img" src="./img/1.jpg" alt=""><a href="#" class="main-bar_link">Technology</a></li>-->
+                </ul>
+                <ul class="main-box">
+                    <li><a href="#" class="main-box_link">About •</a> <a href="#" class="main-box_link">Careers</a></li>
+                    <li><a href="#" class="main-box_link">Terms •</a> <a href="#" class="main-box_link">Privacy</a></li>
+                    <li><a href="#" class="main-box_link">Acceptable Use</a></li>
+                    <li><a href="#" class="main-box_link">Businesses •</a> <a href="#" class="main-box_link">Press</a></li>
+                    <li><a href="#" class="main-box_link">Your Ad Choices</a></li>
+                </ul>
+            </div>
+            <div class="main-blog">
+                <div class="main-blog_add">
+                    <div class="d-flex ">
+
+                        <img src="{{ request.user.profile_pic }}" class="rounded-circle" height="30" width="30">
+
+                        <button class="btn mail-btn share">What do you want to ask or share ?</button>
+                    </div>
+                    <!-- add -->
+                    <div class="">
+                        <a href="{% url 'create_question' %}" class="btn post show-buttonss">
+                            <svg width="24" height="21" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g class="icon_svg-stroke" stroke="#666" stroke-width="1.5" fill="none" fill-rule="evenodd"><g transform="translate(9 7)"><path d="M3 6v-.5A2.5 2.5 0 1 0 .5 3" stroke-linecap="round" stroke-linejoin="round"></path><circle class="icon_svg-fill_as_stroke" fill="#666" cx="3" cy="8.5" r="1" stroke="none"></circle></g><path d="M7.5 4h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-3L9 22v-3H7.5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z" stroke-linejoin="round"></path></g></svg>
+                            Ask</a>
+                        <a href="{% url 'questions_list' %}" class="btn post ">
+                            <svg width="24" height="21" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g stroke-width="1.5" fill="none" fill-rule="evenodd"><path d="M18.571 5.429h0a2 2 0 0 1 0 2.828l-9.9 9.9-4.24 1.416 1.412-4.245 9.9-9.9h0a2 2 0 0 1 2.828 0Z" class="icon_svg-stroke" stroke="#666" stroke-linecap="round" stroke-linejoin="round"></path><path class="icon_svg-fill_as_stroke" fill="#666" d="m4.429 19.571 2.652-.884-1.768-1.768z"></path><path d="M14.5 19.5h5v-5m-10-10h-5v5" class="icon_svg-stroke" stroke="#666" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+                            Answer</a>
+                        <a href="{% url 'create_post' %}" class="btn post show-buttons_three">
+                            <svg width="24" height="21" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M18.571 5.429h0a2 2 0 0 1 0 2.828l-9.9 9.9-4.24 1.416 1.412-4.245 9.9-9.9a2 2 0 0 1 2.828 0Z" class="icon_svg-stroke" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path class="icon_svg-fill_as_stroke" fill="#666" d="m4.429 19.571 2.652-.884-1.768-1.768z"></path></g></svg>
+                            Post</a>
+                    </div>
+                </div>
+                <div class="main-blog_list">
+                    <div class="main-list_head ">
+                        <div class="blog-list d-flex align-item-center">
+                            <img class="blog-title_img" src="https://qph.cf2.quoracdn.net/main-thumb-ti-3657977-50-psvkqseofdwluoyuhcjvctgzwurbycdr.jpeg" >
+                            <div>
+                                <div>
+                                    <a class="blog-list_link" href="#">Only Truth About Russia </a><span class="main-box_link">•</span>
+                                    <button class="blog-list_button">Follow</button>
+                                </div>
+                                <div>
+                                    <p class="blog-list_text">Answered by <a class="blog-after" href="#" >Jan 7</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn clear-btn"><i class='bx bx-x clear-img'></i></button>
+                    </div>
+                    <div class="main-list">
+                        <a class="list-link_one" href="">Lorem ipsum dolor sit amet consectetur.</a>
+                        <a class="list-link_two" href="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, soluta.</a>
+                        <img class="list-img" src="./img/2.jpg" alt="">
+                    </div>
+                    <div class="main-footer d-flex justify-content-between">
+                        <div class="main-footer_content d-flex">
+                            <div class="d-flex ">
+                                <button class="btn Upvote"><svg width="22" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4 3 15h6v5h6v-5h6z" class="icon_svg-stroke icon_svg-fill" stroke-width="1.5" stroke="#666" fill="none" stroke-linejoin="round"></path></svg><span class="main-footer_numb">561</span></button>
+                                <button class="btn Downvote"><svg width="22" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 20 9-11h-6V4H9v5H3z" class="icon_svg-stroke icon_svg-fill" stroke="#666" fill="none" stroke-width="1.5" stroke-linejoin="round"></path></svg></button>
+                            </div>
+                            <button class="btn comment"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.071 18.86c4.103 0 7.429-3.102 7.429-6.93C19.5 8.103 16.174 5 12.071 5s-7.429 3.103-7.429 6.93c0 1.291.379 2.5 1.037 3.534.32.501-1.551 3.058-1.112 3.467.46.429 3.236-1.295 3.803-.99 1.09.585 2.354.92 3.701.92Z" class="icon_svg-stroke icon_svg-fill" stroke="#666" stroke-width="1.5" fill="none"></path></svg><span class="main-footer_numb">21</span></button>
+                            <button class="btn share"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g class="icon_svg-stroke" stroke="#666" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M19.748 10a8.003 8.003 0 0 0-15.496.002m.001 4.003a8.003 8.003 0 0 0 15.494 0"></path><path d="m2.5 7.697 1.197 3.289 3.289-1.197m14.5 6.5L20.289 13 17 14.197"></path></g></svg></button>
+                        </div>
+                        <button class="btn more"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.25 11.25a1.06 1.06 0 1 0 1.5 1.5 1.06 1.06 0 0 0-1.5-1.5Zm-7 0a1.06 1.06 0 1 0 1.5 1.5 1.06 1.06 0 0 0-1.5-1.5Zm14 0a1.06 1.06 0 1 0 1.5 1.5 1.06 1.06 0 0 0-1.5-1.5Z" class="icon_svg-stroke" fill="#666" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+                    </div>
+                </div>
+                <div class="main-blog_list">
+                    <div class="main-list_head ">
+                        <div class="blog-list d-flex align-item-center">
+                            <img class="blog-title_img" src="https://qph.cf2.quoracdn.net/main-thumb-ti-3657977-50-psvkqseofdwluoyuhcjvctgzwurbycdr.jpeg" >
+                            <div>
+                                <div>
+                                    <a class="blog-list_link" href="#">Only Truth About Russia </a><span class="main-box_link">•</span>
+                                    <button class="blog-list_button">Follow</button>
+                                </div>
+                                <div>
+                                    <p class="blog-list_text">Answered by <a class="blog-after" href="#" >Jan 7</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn clear-btn"><i class='bx bx-x clear-img'></i></button>
+                    </div>
+                    <div class="main-list">
+                        <a class="list-link_one" href="">Lorem ipsum dolor sit amet consectetur.</a>
+                        <a class="list-link_two" href="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, soluta.</a>
+                        <img class="list-img" src="./img/2.jpg" alt="">
+                    </div>
+                    <div class="main-footer d-flex justify-content-between">
+                        <div class="main-footer_content d-flex">
+                            <div class="d-flex ">
+                                <button class="btn Upvote"><svg width="22" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4 3 15h6v5h6v-5h6z" class="icon_svg-stroke icon_svg-fill" stroke-width="1.5" stroke="#666" fill="none" stroke-linejoin="round"></path></svg><span class="main-footer_numb">561</span></button>
+                                <button class="btn Downvote"><svg width="22" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 20 9-11h-6V4H9v5H3z" class="icon_svg-stroke icon_svg-fill" stroke="#666" fill="none" stroke-width="1.5" stroke-linejoin="round"></path></svg></button>
+                            </div>
+                            <button class="btn comment"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.071 18.86c4.103 0 7.429-3.102 7.429-6.93C19.5 8.103 16.174 5 12.071 5s-7.429 3.103-7.429 6.93c0 1.291.379 2.5 1.037 3.534.32.501-1.551 3.058-1.112 3.467.46.429 3.236-1.295 3.803-.99 1.09.585 2.354.92 3.701.92Z" class="icon_svg-stroke icon_svg-fill" stroke="#666" stroke-width="1.5" fill="none"></path></svg><span class="main-footer_numb">21</span></button>
+                            <button class="btn share"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g class="icon_svg-stroke" stroke="#666" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M19.748 10a8.003 8.003 0 0 0-15.496.002m.001 4.003a8.003 8.003 0 0 0 15.494 0"></path><path d="m2.5 7.697 1.197 3.289 3.289-1.197m14.5 6.5L20.289 13 17 14.197"></path></g></svg></button>
+                        </div>
+                        <button class="btn more"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.25 11.25a1.06 1.06 0 1 0 1.5 1.5 1.06 1.06 0 0 0-1.5-1.5Zm-7 0a1.06 1.06 0 1 0 1.5 1.5 1.06 1.06 0 0 0-1.5-1.5Zm14 0a1.06 1.06 0 1 0 1.5 1.5 1.06 1.06 0 0 0-1.5-1.5Z" class="icon_svg-stroke" fill="#666" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./Javascript/script.js"></script>
+</body>
+
+</html>
+<!--{% endblock content %}-->

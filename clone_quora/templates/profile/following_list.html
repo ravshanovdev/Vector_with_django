@@ -1,0 +1,26 @@
+{% load static %}
+
+    <h1>Following List</h1>
+    <ul>
+    <link rel="stylesheet" href="{% static 'css/following.css' %}">
+        {% for profile in following %}
+           {% if request.user != profile.user %}
+                {% if profile.profile_pic %}
+                    <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
+                {% else %}
+                    <img src="{% static 'img/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg' %}" alt="Default Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
+                {% endif %}
+                <li><a href="{% url 'profile_page' slug=profile.slug %}">{{ profile.user.username }}</a></li>
+                <div class="profile-bio">
+                    {% if profile.biography %}
+                        {{ profile.biography }}
+                    {% endif %}
+                </div>
+           {% endif %}
+            <br>
+            </br>
+        {% empty %}
+            <li>You are not following anyone yet.</li>
+        {% endfor %}
+    </ul>
+

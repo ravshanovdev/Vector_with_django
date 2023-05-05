@@ -1,0 +1,15 @@
+{% for question in question_list %}
+  {% if question %}
+    <h2>{{ question.title }}</h2>
+    <img src="{{ question.poster.url }}" alt="Question Image" style="max-width: 300px; max-height: 300px;">
+    <p>{{ question.text }}</p>
+  {% else %}
+    <li>hozircha savollar yo'q edi...</li>
+
+  {% endif %}
+
+
+  | <a href="{% url 'question_detail' question.id %}" class="btn btn-primary">Batafsil</a>
+  | <a href="{% url 'create_answer' question.id %}" class="btn btn-primary">Javob yozish</a>
+  | <li><a href="{% url 'answer_list' question.id %}">javoblar</a></li>
+{% endfor %}

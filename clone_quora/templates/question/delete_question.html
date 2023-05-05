@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>O'chirish</title>
+</head>
+<body>
+    <h1>O'chirish</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <p>Ishonchingiz komilmi?</p>
+        <button type="submit">Ha</button>
+        <a href="{% url 'questions_list' %}">Yo'q</a>
+    </form>
+</body>
+</html>
