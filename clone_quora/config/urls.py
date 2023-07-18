@@ -22,9 +22,9 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('post/', include('post.urls')),
+    path('', include('post.urls')),
     path('profile/', include('user_profiles.urls')),
-    path('', include('pages.urls')),
-]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

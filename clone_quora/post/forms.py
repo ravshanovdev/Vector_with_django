@@ -1,5 +1,15 @@
 from django import forms
-from .models import Question, Answer, Comment
+from .models import Question, Answer, Comment, Post
+
+
+class CreatePostForm(forms.ModelForm):
+    title = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Post's title"}))
+    description = forms.CharField(label='', widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'post body...'}))
+    photo = forms.FileField(label='Photo', widget=forms.FileInput(attrs={'class': 'form-control'}))
+
+    class Meta:
+        model = Post
+        fields = ['title', 'description', 'photo', ]
 
 
 class QuestionForm(forms.ModelForm):

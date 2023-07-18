@@ -1,88 +1,106 @@
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
-
 {% load static %}
 
 
+{% block content %}
+<div class="container">
+    <div class="profile">
+        <div class="profile-header">
+            <div class="profile-img">
+                <div class="card mb-5">
+                    <div class="row g-0">
+                        <div class="col-md-3">
+                            {% if profile.profile_pic %}
+                                <img src="{{ profile.profile_pic.url }}" style="max-width: 200px; max-height: 200px;" class="img-fluid rounded-start" alt="Profile Picture" >
 
-    <div class="container">
-        <div class="profile">
-            <div class="profile-header">
-                <div class="profile-img">
-                    {% if profile.profile_pic %}
+                            {% else %}
+                                <img src="{% static 'img/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg' %}" alt="Default Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
 
-                        <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
-                        <li>{{ profile.user }}</li>
-                    {% else %}
-                        <img src="{% static 'img/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg' %}" alt="Default Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
-                        {{ profile.user }}
-                    {% endif %}
+                            {% endif %}
+                {% if profile.user.first_name %}
+                    <h3><p><u>{{ profile.user.first_name }}</u></p></h3>
+                {% else %}
+                    <li>{{ profile.user.username }}</li>
+                {% endif %}
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">My Bio...!</h5>
+                                {% if profile.biography %}
+                                    <p class="card-text">{{ profile.biography }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-            <br>
-            <div class="profile-info">
-                <div class="profile-bio">
-                    {% if profile.biography %}
-                        {{ profile.biography }}
-                    {% endif %}
-                </div>
-                <div class="profile-links">
-                    <h2>My profiles on other social pages</h2>
+        </div>
+        <br>
+        <div class="profile-info">
+            <div class="profile-links">
+                <h3><p class="font-monospace">My profiles on other social pages</p></h3>
+                {% if profile.web_site_url or profile.twitter_url or profile.instagram_url or profile.facebook_url or profile.pinterest_url %}
                     <ul>
-                       {% if profile.web_site_url %}
-                             <a href="{{ profile.web_site_url }}" target="_blank">Website</a>
-                       {% endif %}
-                       {% if profile.twitter_url %}
-                           | <a href="{{ profile.twitter_url }}" target="_blank">Twitter</a>
-                       {% endif %}
-                       {% if profile.instagram_url %}
-                           | <a href="{{ profile.instagram_url }}" target="_blank">Instagram</a>
-                       {% endif %}
-                       {% if profile.facebook_url %}
-                           | <a href="{{ profile.facebook_url }}" target="_blank">Facebook</a>
-                       {% endif %}
-                       {% if profile.pinterest_url %}
-                           | <a href="{{ profile.pinterest_url }}" target="_blank">Pinterest</a>
-                       {% endif %}
-                       | <a href="{% url 'update_profile' request.user %}" target="_blank">profilni tahrirlash</a>
-                        <br>
-
-                        </br>
-
-                  <form method="POST">
-                     {% if request.user != profile.user %}
-                        {% csrf_token %}
-
-                        {% if profile in user.profile.follows.all %}
-                          <button class="btn btn-outline-danger" name="follow"
-                          value="unfollow" type="submit">Unfollow @{{ profile.user.username }}</button>
-
-                        {% else %}
-                          <button class="btn btn-outline-succes" name="follow"
-                          value="follow" type="submit">Follow @{{ profile.user.username }}</button>
-
+                        {% if profile.web_site_url %}
+                            <p><a href="{{ profile.web_site_url }}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Website</a></p>
                         {% endif %}
-                     {% endif %}
-
-                  </form>
-
-
+                        {% if profile.twitter_url %}
+                            <p>| <a href="{{ profile.twitter_url }}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Twitter</a></p>
+                        {% endif %}
+                        {% if profile.instagram_url %}
+                            <p>| <a href="{{ profile.instagram_url }}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Instagram</a></p>
+                        {% endif %}
+                        {% if profile.facebook_url %}
+                            <p>| <a href="{{ profile.facebook_url }}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Facebook</a></p>
+                        {% endif %}
+                        {% if profile.pinterest_url %}
+                            <p>| <a href="{{ profile.pinterest_url }}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Pinterest</a></p>
+                        {% endif %}
                     </ul>
-                </div>
+                {% else %}
+                    {% if request.user == profile.user %}
+                        <div class="text-nowrap bg-body-secondary border" style="width: 8rem;">
+                            Do you have an account on other social pages?
+                        </div>
+                    {% else %}
+                        <div class="text-nowrap bg-body-secondary border" style="width: 8rem;">
+                            Have you forgotten to add me to your profile?
+                        </div>
+                    {% endif %}
+                    <br>
+                {% endif %}
+                {% if request.user == profile.user %}
+                    <a class="btn btn-outline-success" href="{% url 'update_profile' profile.user %}" role="button">Edit Profile</a>
+                {% endif %}
+                <form method="POST">
+                    {% if request.user != profile.user %}
+                        {% csrf_token %}
+                        {% if profile in user.profile.follows.all %}
+                            <button class="btn btn-outline-danger" name="follow" value="unfollow" type="submit">Unfollow @{{ profile.user.username }}</button>
+                        {% else %}
+                            <button class="btn btn-outline-success" name="follow" value="follow" type="submit">Follow @{{ profile.user.username }}</button>
+                        {% endif %}
+                    {% endif %}
+                </form>
+                {% if post %}
+                    {% for p in post %}
+                        <div class="card mb-3">
+                            <img src="{{ p.photo.url }}" class="card-img-top" alt="Post Picture" style="max-width: 500px; max-height: 500px;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ p.title }}</h5>
+                                <p class="card-text">{{ p.body }}</p>
+                            </div>
+                            <a href="{% url 'post_detail' p.slug %}" type="button" class="btn btn-outline-info">View more</a>
+                            <br></br>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
+</div>
+{% endblock content %}
 
-<!--<div class="card mb-3" style="max-width: 540px;">-->
-<!--  <div class="row g-0">-->
-<!--    <div class="col-md-4">-->
-<!--      <img src="..." class="img-fluid rounded-start" alt="...">-->
-<!--    </div>-->
-<!--    <div class="col-md-8">-->
-<!--      <div class="card-body">-->
-<!--        <h5 class="card-title">{{ profile.user.username }}</h5>-->
-<!--        <p class="card-text">{{ profile.biography }}</p>-->
-<!--        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+

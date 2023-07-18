@@ -1,6 +1,7 @@
-
+{% extends 'base.html' %}
 {% load static %}
 
+{% block content %}
   <div class="container">
     <div class="card">
       <div class="card-header">
@@ -10,12 +11,12 @@
         {% if question.poster %}
           <img src="{{ question.poster.url }}" alt="{{ question.body_question }}" style="max-width: 300px; max-height: 300px;">
         {% endif %}
-        {% if question.user.profile_page.profile_pic %}
-          <img src="{{ request.user.profile_page.profile_pic }}" alt="Profile Picture" class="img-fluid" style="max-width: 300px; max-height: 300px;">
+        {% if question.user.profile.profile_pic %}
+          <img src="{{ question.user.profile.profile_pic.url }}" alt="Profile Picture" class="img-fluid" style="max-width: 30px; max-height: 30px;">
         {% else %}
-          <img src="{% static 'img/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg' %}" alt="Default Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
+          <img src="{% static 'img/default-profile.jpg' %}" alt="" style="max-width: 100px; max-height: 100px;" class="img-fluid">
            <div class="profile-name">
-              <a href="{% url 'profile_page' request.user %}">{{ question.user.profile.user.username }}</a>
+              <a href="{% url 'profile_page' question.user.profile.slug %}">{{ question.user.profile.user.username }}</a>
            </div>
         {% endif %}
         <a href="{% url 'update_question' question.id %}">savolni o'zgartirish</a>
@@ -25,7 +26,7 @@
             <div class="card my-3">
               <div class="card-body">
                 <p class="card-text">{{ answer.text }}</p>
-                <p class="card-subtitle text-muted">Javob beruvchi ismi: {{ answer.user.username }}</p>
+                <p class="card-subtitle text-muted">Javob beruvchi ismi: <a href="{% url 'profile_page' answer.user.profile %}">{{ answer.user.first_name }}</a></p>
                 <p class="card-subtitle text-muted">Javob beruvchining javobi: {{ answer.answer }}</p>
                 {% if answer.poster %}
                     <img src="{{ answer.poster.url }}" alt="Answer Image" style="max-width: 300px; max-height: 300px;">
@@ -47,4 +48,6 @@
       </div>
     </div>
   </div>
+
+{% endblock %}
 

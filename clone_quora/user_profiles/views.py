@@ -1,16 +1,11 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.models import User
-from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, DeleteView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
+from django.views.generic import DetailView, UpdateView
 
 from .forms import ProfileForm
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse, Http404
 
+from post.models import Post
 from .models import Profile
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -22,8 +17,9 @@ class ProfileDetailView(DetailView):
 
     def get(self, request, *args, **kwargs):
         response = super().get(request, *args, **kwargs)
+        post = Post.objects.filter(author_id=self.object.id)
         profile = self.get_object()
-        return render(request, self.template_name, {'profile': profile})
+        return render(request, self.template_name, {'profile': profile, 'post': post})
 
     def post(self, request, *args, **kwargs):
         current_user_profile = request.user.profile
@@ -38,22 +34,21 @@ class ProfileDetailView(DetailView):
         return redirect('profile_page', slug=profile.slug)
 
 
-class UpdateProfileView(UpdateView):
+class UpdateProfileView(UpdateView, LoginRequiredMixin):
     model = Profile
     template_name = 'profile/update_profile.html'
     form_class = ProfileForm
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        self.object.user.first_name = form.cleaned_data['username']
+        self.object.user.save()
         return super().form_valid(form)
 
     def get_object(self, queryset=None):
         return self.model.objects.get(user__username=self.kwargs['slug'])
 
 
-
-
-@login_required
+@login_required(login_url='login')
 def following_list(request):
     user_profile = request.user.profile
     following = user_profile.follows.all()

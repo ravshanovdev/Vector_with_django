@@ -3,16 +3,16 @@ from django.urls import path
 from .views import (
     # POstga oid
     PostDetailView,
-    BlogPostView,
+    blog_post_view,
     LikeView,
-    CreatePostView,
+
     UpdatePostView,
     DeletePostView,
     # obunaga oid
 
     # "question"ga oid qism
     QuestionListView,
-    CreateQuestionView,
+
     DetailQuestionView,
     DeleteQuestionView,
     UpdateQuestionView,
@@ -28,11 +28,11 @@ from .views import (
 urlpatterns = [
     # postga oid
 
-    path('', BlogPostView.as_view(), name='post_list'),
+    path('', blog_post_view, name='home'),
 
 
     # questionga oid
-    path('ask_question/', CreateQuestionView.as_view(), name='create_question'),
+    # path('ask_question/', create_question_view, name='create_question'),
     path('question/<int:pk>/', DetailQuestionView.as_view(), name='question_detail'),
 
 
@@ -42,10 +42,10 @@ urlpatterns = [
 
 
     # post
-    path('create_Post/', CreatePostView.as_view(), name='create_post'),
-    path('<slug>/comment/', CreateCommentView.as_view(), name='add_comment'),
+    # path('create_Post/', CreatePostView.as_view(), name='create_post'),
+    path('<slug:post_slug>/comment/', CreateCommentView.as_view(), name='add_comment'),
     # question
-    path('questions/', QuestionListView.as_view(), name='questions_list'),
+    path('questions/', QuestionListView, name='questions_list'),
 
     # answerga oid
     path('answer/<int:question_id>/', CreateAnswer.as_view(), name='create_answer'),

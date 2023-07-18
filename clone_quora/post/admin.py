@@ -19,9 +19,10 @@ admin.site.register(Answer)
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'author')
+    list_display = ('title', 'description', 'author', 'created_at')
     search_fields = ('title',)
-    prepopulated_fields = {'slug': ('title',)}
+
+    prepopulated_fields = {'slug': ('created_at', )}
 
 
 

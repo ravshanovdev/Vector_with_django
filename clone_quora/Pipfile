@@ -9,6 +9,8 @@ django-crispy-forms = "*"
 pillow = "*"
 django-allauth = "==0.45.0"
 django-extensions = "*"
+django-imagekit = "*"
+crispy-bootstrap5 = "*"
 
 [dev-packages]
 

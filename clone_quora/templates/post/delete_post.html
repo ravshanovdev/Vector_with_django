@@ -1,8 +1,10 @@
-
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}Postni o'chirish{% endblock %}
 
-
+{% block content %}
   <div class="container">
     <h1 class="my-4">Postni o'chirish</h1>
     <p>Ishonchingiz komilmi? "{{ object.title }}" nomli postni o'chirishni xohlaysizmi?</p>
@@ -12,4 +14,4 @@
       <a href="{% url 'post_detail' post.slug %}" class="btn btn-secondary">Yo'q, qaytish</a>
     </form>
   </div>
-
+{% endblock %}

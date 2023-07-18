@@ -1,15 +1,28 @@
-{% for question in question_list %}
-  {% if question %}
-    <h2>{{ question.title }}</h2>
-    <img src="{{ question.poster.url }}" alt="Question Image" style="max-width: 300px; max-height: 300px;">
-    <p>{{ question.text }}</p>
-  {% else %}
-    <li>hozircha savollar yo'q edi...</li>
+{% extends 'base.html' %}
 
+{% block content %}
+  {% if q %}
+    {{ q }}
+  {% else %}
+    <h3>Latest Questions</h3>
   {% endif %}
 
+  {% for question in questions %}
+    {% if question %}
+      <h4><a href="{% url 'profile_page' question.user.profile %}">{{ question.user }}</a></h4>
+      <h2>{{ question.title }}</h2>
+      <img src="{{ question.poster.url }}" alt="Question Image" style="max-width: 300px; max-height: 300px;">
+      <p class="font-monospace">{{ question.body_question }}</p>
 
-  | <a href="{% url 'question_detail' question.id %}" class="btn btn-primary">Batafsil</a>
-  | <a href="{% url 'create_answer' question.id %}" class="btn btn-primary">Javob yozish</a>
-  | <li><a href="{% url 'answer_list' question.id %}">javoblar</a></li>
-{% endfor %}
+      | <a href="{% url 'question_detail' question.id %}" class="btn btn-primary">Batafsil</a>
+      | <a href="{% url 'create_answer' question.id %}" class="btn btn-primary">Javob yozish</a>
+      | <a href="{% url 'answer_list' question.id %}" class="btn btn-primary">javoblar</a> <br><h1>----------------------------</h1></br>
+    {% else %}
+      <li>hozircha savollar yo'q edi...</li>
+    {% endif %}
+  {% endfor %}
+
+
+
+
+{% endblock %}

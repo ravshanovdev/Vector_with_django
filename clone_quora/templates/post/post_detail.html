@@ -1,44 +1,47 @@
+{% extends 'base.html' %}
 
 {% load static %}
 
+{% block content %}
   <div class="container-fluid">
     <div class="card">
       {% if object.photo %}
-        <img src="{{ object.photo.url }}" class="card-img-top" style="max-width: 400px; max-height: 400px;" alt="{{ object.title }}">
+        <img src="{{ object.photo.url }}" class="card-img-top" style="max-width: 700px; max-height: 700px;" alt="{{ object.title }}">
       {% endif %}
       <div class="card-body">
         <h1 class="card-title">{{ object.title }}</h1>
         <h6 class="card-subtitle mb-2 text-muted">{{ object.date }}</h6>
         <p class="card-text">{{ object.description | safe }}</p>
-        <a href="{% url 'update_post' post.slug %}">Tahrirlash</a> |
+        {% if request.user == post.author %}
+             <a href="{% url 'update_post' post.slug %}">Tahrirlash</a> |
+        {% endif %}
         <form action="{% url 'like_post' object.slug %}" method="POST">
           {% csrf_token %}
           <button type="submit" name="post_slug" value="{{ object.slug }}" class="btn btn-primary btn-sm">Like</button>
-          <span class="ml-2">{{ total_likes }} Likes</span>
+          <span class="ml-2">{{ total_likes }} Likes</span><br></br>
         </form>
-        <button><a href="{% url 'add_comment' post.slug %}" class="btn btn-primary">Yangi sharh qo'shish</a></button>
-        {% if comment_list %}
-          <h3>Comments</h3>
-             <ul class="list-unstyled">
-             {% for comment in comment_list %}
-                  <li>
-                   {% if comment.user.profile.profile_pic %}
-                        <img class="card-img-top" src="{{ comment.user.profile.profile_pic.url }}" alt="{{ comment.user }}">
-                   {% else %}
-                        <img src="{% static 'img/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg' %}" alt="Default Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
-                   {% endif %}
-                        <a href="{% url 'profile_page' comment.user.profile.profil.slug %}" >{{ comment.user }}</a>
-                   <p>{{ comment.body }}</p>
-                   </li>
-             {% empty %}
-                <li>There are no comments yet.</li>
-             {% endfor %}
-             </ul>
-        {% else %}
-            <p>There are no comments yet.</p>
-        {% endif %}
+        <a href="{% url 'add_comment' object.slug %}" class="btn btn-outline-primary">Yangi sharh qo'shish</a>
+
+        <h3>Comments</h3>
+        <ul class="list-unstyled">
+          {% for comment in comments %}
+            <li>
+              {% if comment.name.profile.profile_pic %}
+                <img class="card-img-top" src="{{ comment.name.profile.profile_pic.url }}" alt="{{ comment.name.username }}" style="max-width: 100px; max-height: 100px;">
+                <a href="{% url 'profile_page' comment.name.profile %}" >{{ comment.name }}</a>
+              {% else %}
+                <img src="{% static 'img/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg' %}" alt="Default Profile Picture" style="max-width: 100px; max-height: 100px;" class="img-fluid">
+              {% endif %}
+              <p>{{ comment.body }}</p>
+              <small>{{ comment.created_at }}</small>
+            </li>
+          {% empty %}
+            <li>There are no comments yet...</li>
+          {% endfor %}
+        </ul>
 
       </div>
     </div>
   </div>
 
+{% endblock %}

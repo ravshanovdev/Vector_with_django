@@ -10,7 +10,6 @@ from django.contrib.auth.models import User
 #     model = Profile
 
 
-
 @admin.register(Profile)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('user', 'biography', 'profile_pic', 'web_site_url', 'instagram_url',
@@ -19,12 +18,4 @@ class UserAdmin(admin.ModelAdmin):
 
 
 
-# class UserAdmin(admin.ModelAdmin):
-#     model = User
-#     fields = ["username", "email", "is_superuser"]
-#     inlines = [ProfileInline]
-#     list_display = ['username', 'is_superuser', "email"]
-#
-#
-# admin.site.unregister(User)
-# admin.site.register(User, UserAdmin)
+

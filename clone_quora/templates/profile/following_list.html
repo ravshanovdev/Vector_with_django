@@ -1,8 +1,10 @@
+{% extends 'base.html' %}
 {% load static %}
 
+{% block content %}
     <h1>Following List</h1>
     <ul>
-    <link rel="stylesheet" href="{% static 'css/following.css' %}">
+
         {% for profile in following %}
            {% if request.user != profile.user %}
                 {% if profile.profile_pic %}
@@ -24,3 +26,4 @@
         {% endfor %}
     </ul>
 
+{% endblock content %}

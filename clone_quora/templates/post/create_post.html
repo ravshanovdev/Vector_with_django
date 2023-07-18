@@ -1,23 +1,47 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Yangi Post yaratish</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
     <h1>Yangi Post yaratish</h1>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="title">Sarlavha:</label><br>
-        <input type="text" id="title" name="title"><br>
+    <!-- Button to trigger the modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createPostModal">
+        Post yaratish
+    </button>
 
-        <label for="description">Tavsif:</label><br>
-        <textarea id="description" name="description"></textarea><br>
+    <!-- Modal -->
+    <div class="modal fade" id="createPostModal" tabindex="-1" role="dialog" aria-labelledby="createPostModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createPostModalLabel">Yangi Post yaratish</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="title">Sarlavha:</label><br>
+                        <input type="text" id="title" name="title"><br>
 
-        <label for="photo">Rasm:</label><br>
-        <input type="file" id="photo" name="photo"><br>
+                        <label for="description">Tavsif:</label><br>
+                        <textarea id="description" name="description"></textarea><br>
 
-        <input type="submit" value="Jo'natish">
-    </form>
+                        <label for="photo">Rasm:</label><br>
+                        <input type="file" id="photo" name="photo"><br>
+
+                        <input type="submit" value="Jo'natish">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

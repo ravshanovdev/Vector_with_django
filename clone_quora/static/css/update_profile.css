@@ -1,0 +1,30 @@
+/* Custom CSS for the form */
+.my-form {
+  margin-bottom: 20px;
+}
+
+.my-form .btn {
+  margin-right: 10px;
+}
+
+.my-form .btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.my-form .btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.my-form .btn-outline-success {
+  color: #28a745;
+  border-color: #28a745;
+}
+
+.my-form .btn-outline-success:hover {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
