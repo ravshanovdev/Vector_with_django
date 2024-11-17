@@ -1,5 +1,5 @@
 # clone_quora
-Bu Web dasturni men portfolio uchun yaratdim. Lekin kelajakda kim bilsin balki katta foyda olib kelar. Bu Web dasturni men Quora.com web dasturidan ilhomlanib shuning oddiy bir clone versiyasini yaratdim. Ko'ring va baho bering.
+Bu Web dasturni men portfolio uchun yaratdim. Lekin kelajakda kim bilsin balki katta foyda olib kelar. Bu Web dasturni men Quora.com web dasturidan ilhomlanib shuning oddiy bir clone versiyasini Djangodan foydalangan holda yaratdim. Ko'ring va baho bering.
 requirements: django == 4.0.1
               django-crispy-forms==2.0
               django-extensions==3.2.1
