@@ -65,9 +65,9 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post = self.get_object()
-        comments = post.comments.order_by('created_at')  # Tartibni o'zgartirish
+        comments = post.comments.order_by('created_at')
         context['comments'] = comments
-        total_likes = post.total_likes()  # total_likes() metodi orqali total_likes ni olish
+        total_likes = post.total_likes()
         context['total_likes'] = total_likes
         return context
 

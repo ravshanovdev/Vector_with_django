@@ -15,9 +15,8 @@
 <body>
 
 <!--post modal uchun-->
-<div class="modal fade" id="createPostModal" data-bs-backdrop="createPostModal" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="createPostModalLabel" aria-hidden="true">
-
-        <div class="modal-dialog">
+    <div class="modal fade" id="createPostModal" tabindex="-1" role="dialog" aria-labelledby="createPostModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="createPostModalLabel">Yangi Post yaratish</h5>
@@ -25,8 +24,7 @@
                         <span aria-hidden="true">&times;</span>
                     </a>
                 </div>
-
-                   <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-body">
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <label for="title">Sarlavha:</label><br>
@@ -40,12 +38,10 @@
 
                         <input type="submit" value="Jo'natish">
                     </form>
-                   </div>
-
+                </div>
             </div>
         </div>
     </div>
-
 
 <!-- question = modal uchun kod-->
 <div class="modal fade" id="addQuestionModal" tabindex="-1" aria-labelledby="addQuestionModalLabel" aria-hidden="true">
@@ -77,7 +73,7 @@
     </div>
   </div>
 </div>
-
+<!--bu shu yerda tugaydi-->
     <div class="header">
         <div class="container">
             <nav class="nav">
@@ -108,7 +104,7 @@
                 <div class="try">
                     <div>
                         {% if request.user.is_authenticated %}
-                        <a class="nav-link" href="{% url 'profile_page' slug=request.user.first_name %}">
+                        <a class="nav-link" href="{% url 'profile_page' slug=request.user.username %}">
                             {% if request.user.profile.profile_pic %}
                                 <img src="{{ request.user.profile.profile_pic.url }}" alt="Profile Picture" style="max-width: 50px; max-height: 50px;" class="img-fluid">
                             {% else %}

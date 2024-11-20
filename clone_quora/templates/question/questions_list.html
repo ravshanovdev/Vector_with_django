@@ -11,7 +11,9 @@
     {% if question %}
       <h4><a href="{% url 'profile_page' question.user.profile %}">{{ question.user }}</a></h4>
       <h2>{{ question.title }}</h2>
-      <img src="{{ question.poster.url }}" alt="Question Image" style="max-width: 300px; max-height: 300px;">
+      {% if question.poster %}
+        <img src="{{ question.poster.url }}" alt="Question Image" style="max-width: 300px; max-height: 300px;">
+      {% endif %}
       <p class="font-monospace">{{ question.body_question }}</p>
 
       | <a href="{% url 'question_detail' question.id %}" class="btn btn-primary">Batafsil</a>
